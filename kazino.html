@@ -1,0 +1,70 @@
+<meta charset="utf-8">
+<script>
+	
+	let arr = [];
+
+	/* '-1' - выпадение чёрного числа;
+	 * '0' - выпадение нулевого числа;
+	 * '1' - выпадение красного числа.
+	 */ 
+	let arr1 = [-1, 0, 1];
+	let a = 100
+	let red = 0;
+	let max_red = 0;
+	let zero = 0;
+	let max_zero = 0;
+	let black = 0;
+	let max_black = 0; 
+
+	// Заполнение массив arr сотней рандомных значений из массива arr1
+	for (let i = 0; i <= a; i++) {
+		let rand = Math.floor(Math.random() * arr1.length);	
+		arr.push(arr1[rand]);
+	}
+	alert(arr); 
+
+	// Обход по массиву arr
+	for (i = 0; i < arr.length; i++) {
+		
+		// Подсчёт максимальной красной последовательности
+		if (arr[i] == 1) {
+			red = 0;
+			while (arr[i] == 1 && i < arr.length) {
+				i++;
+				red++;
+			}
+			if (red > max_red) {
+				max_red = red;
+			}
+		}
+
+		// Подсчёт максимальной нулевой последовательности
+		if (arr[i] == 0) {
+			zero = 0;
+			while (arr[i] == 0 && i < arr.length) {
+				i++
+				zero++;
+			}
+			if (zero > max_zero) {
+				max_zero = zero;
+			}
+		}
+
+		// Подсчёт максимальной чёрной последовательности 
+		if (arr[i] == -1) {
+			black = 0;
+			while (arr[i] == -1 && i < arr.length) {
+				i++;
+				black++;
+			}
+			if (black > max_black) {
+				max_black = black;
+			}
+		}
+	}
+	
+		alert('Максимальная красная последовательность: ' + max_red); 
+		alert('Максимальная нулевая последовательность: ' + max_zero);
+		alert('Максимальная чёрная последовательность: ' + max_black);
+
+</script>
